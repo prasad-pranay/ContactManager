@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { UserIcon, MailIcon, PhoneIcon } from "../Helper/SvgIcons";
 import {InputField,TextareaField} from "../Helper/InputFields";
+import {  toast } from "react-toastify";
 
 export default function EditContactModal({ contact, onClose, onUpdate }) {
   const [form, setForm] = useState({
@@ -53,10 +54,12 @@ export default function EditContactModal({ contact, onClose, onUpdate }) {
 
       onUpdate();
       onClose();
+      toast.success("Updated Successfully");
     } catch (err) {
-      console.error(err);
+        console.error(err);
+        toast.error(`Error Occurred ${err}`);
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
   };
 

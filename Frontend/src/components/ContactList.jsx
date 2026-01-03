@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import DeleteContact from "./DeleteContact";
 import { CopyIcon, EditIcon, FlagIcon, MailIcon, PhoneIcon, TrashIcon } from "../Helper/SvgIcons";
 import EditContactModal from "./EditContactModal";
+import {  toast } from "react-toastify";
 
 export default function ContactList({ fetchContacts, contacts, setContacts, selected, setSelected }) {
   // provide contact id here if want to delete
@@ -55,7 +56,8 @@ export default function ContactList({ fetchContacts, contacts, setContacts, sele
           <div className="flex gap-3 text-lg">
             <button onClick={()=>{
               const { _id, __v, createdAt, updatedAt, ...rest } = contact;
-              navigator.clipboard.writeText(JSON.stringify(rest))
+              navigator.clipboard.writeText(JSON.stringify(rest));
+              toast.success(`Details of ${contact.name} copied Successfully.`);
             }} disabled={disableAction} className={`${disableAction && "opacity-50 pointer-events-none"} hover:bg-blue-500 hover:text-white bg-gray-300 dark:bg-gray-500 px-2 py-2 rounded-lg cursor-pointer active:scale-85 transition group duration-150 relative`}>
               <span className="absolute bottom-[120%] left-1/2 -translate-x-1/2 opacity-0 scale-0 group-hover:scale-100 group-hover:opacity-100 bg-gray-700 text-white dark:bg-white dark:text-black rounded-md px-2 py-1 text-xs transition duration-150">Copy</span>
               <CopyIcon className="size-6" />

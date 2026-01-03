@@ -3,6 +3,8 @@ import Toolbar from "./components/Toolbar";
 import ContactList from "./components/ContactList";
 import AddContactModal from "./components/AddContactModal";
 import Header from "./components/Header";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function App() {
   // displaying all contacts here
@@ -62,6 +64,15 @@ export default function App() {
             onAdd={fetchContacts}
           />
         )}
+        <ToastContainer
+        position="top-right"
+        autoClose={1500}  // in milliseconds
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnHover
+        draggable
+      />
       </main>
   );
 }
