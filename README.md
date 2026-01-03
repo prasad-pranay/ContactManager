@@ -1,6 +1,6 @@
-# 📇 Contact Management Web App
+# 📇 Contact Manager
 
-A modern, responsive **Contact Management Web Application** built using the **MERN stack**. This project demonstrates full‑stack fundamentals including form validation, REST APIs, reusable components, clean UI/UX, and real‑world data handling with MongoDB.
+**Contact Management Web Application** built using the **MERN stack**.
 
 ---
 
@@ -11,7 +11,7 @@ A modern, responsive **Contact Management Web Application** built using the **ME
 * Add new contacts with **Name, Email, Phone & Message**
 * Edit existing contacts using a modal interface
 * Delete contacts instantly
-* View contacts as **beautiful, responsive cards**
+* View contacts .
 
 ### 🧠 Smart Form Validation
 
@@ -48,8 +48,6 @@ A modern, responsive **Contact Management Web Application** built using the **ME
 
 * React.js
 * Tailwind CSS
-* useState (State Management)
-* Lucide‑React (Icons)
 
 ### Backend
 
@@ -200,8 +198,3 @@ GET /export
 * Message: Optional
 
 ---
-
-
-### 👨‍💻 Built with ❤️ using the MERN Stack By Pranay
-
-> A practical full‑stack project showcasing real‑world contact management features.
