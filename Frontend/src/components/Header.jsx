@@ -9,7 +9,7 @@ export default function Header({ onAdd, selected, setSelected, setContacts }) {
   // download eexported 
   async function ExportContacts(){
     try {
-    const res = await fetch("https://4a2874e825a0.ngrok-free.app/export", {
+    const res = await fetch("https://contact-manager-4862.up.railway.app/export", {
   headers: {
     "ngrok-skip-browser-warning": "true",
   },

@@ -22,7 +22,7 @@ export default function App() {
   }, []);
 
   async function fetchContacts() {
-    const res = await fetch("https://4a2874e825a0.ngrok-free.app/contacts", {
+    const res = await fetch("https://contact-manager-4862.up.railway.app/contacts", {
   headers: {
     "ngrok-skip-browser-warning": "true",
   },

@@ -102,7 +102,7 @@ export default function ContactList({ fetchContacts, contacts, setContacts, sele
   return (
     <section className="space-y-3 h-full overflow-y-auto overflow-x-hidden pr-1 sm:pr-4 pt-5  pl-1">
       {contacts.map((contact,index) => (
-        <ListCard fetchContacts={fetchContacts} contact={contact} setSelected={setSelected} selected={selected} disableAction={disableAction} setDeleteContact={setDeleteContact} />
+        <ListCard key={index} fetchContacts={fetchContacts} contact={contact} setSelected={setSelected} selected={selected} disableAction={disableAction} setDeleteContact={setDeleteContact} />
       ))}
       {contacts.length == 0 && <div className="flex gap-5 items-center justify-center h-full pb-35">
         <FlagIcon className="size-20" />

@@ -46,7 +46,7 @@ export default function AddContactModal({ onClose, onAdd, contacts }) {
     e.preventDefault();
     if (!isFormValid) return;
 
-    await fetch("https://4a2874e825a0.ngrok-free.app/contacts", {
+    await fetch("https://contact-manager-4862.up.railway.app/contacts", {
       method: "POST",
       headers: { "Content-Type": "application/json","ngrok-skip-browser-warning": "true", },
       body: JSON.stringify(form),

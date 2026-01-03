@@ -47,12 +47,12 @@ export default function EditContactModal({ contact, onClose, onUpdate }) {
 
     try {
       setLoading(true);
-      // await fetch(`https://4a2874e825a0.ngrok-free.app/update/${contact._id}`, {
+      // await fetch(`https://contact-manager-4862.up.railway.app/update/${contact._id}`, {
       //   method: "PUT",
       //   headers: { "Content-Type": "application/json","ngrok-skip-browser-warning": "true", },
       //   body: JSON.stringify(form),
       // });
-      await fetch(`https://4a2874e825a0.ngrok-free.app/update/${contact._id}`, {
+      await fetch(`https://contact-manager-4862.up.railway.app/update/${contact._id}`, {
   method: "PUT",
   headers: {
     "Content-Type": "application/json",
