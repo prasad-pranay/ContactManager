@@ -4,7 +4,7 @@
 
 ---
 
-## 📸 Screenshots (Optional)
+## 📸 Screenshots of the project
 
 | Home Page (Light Mode) | Home Page (Dark Mode) |
 |---------|---------|
@@ -72,7 +72,7 @@
 ## 📁 Project Structure
 
 ```
-contact-app/
+ContactManager/
  ├─ backend/
  │   ├─ models/
  │   │   └─ Contact.js
@@ -108,8 +108,8 @@ contact-app/
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/contact-management-app.git
-cd contact-management-app
+git clone https://github.com/prasad-pranay/ContactManager.git
+cd ContactManager
 ```
 
 ---
