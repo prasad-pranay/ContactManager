@@ -43,6 +43,30 @@ app.delete('/contacts/:id', async (req, res) => {
   }
 });
 
+// UPDSTE here
+app.post("/update/:id", async (req, res) => {
+  const { id } = req.params;
+  const { name, email, phone, message } = req.body;
+
+  try {
+    // Find and update the contact
+    const updatedContact = await Contact.findByIdAndUpdate(
+      id,
+      {name: name,phone:  phone,email: email,message: message },
+      { new: true, runValidators: true } // return updated document & validate
+    );
+
+    if (!updatedContact) {
+      return res.status(404).json({ message: "Contact not found" });
+    }
+
+    res.status(200).json(updatedContact);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 // export contacts here
 app.get("/export", async (req, res) => {
   const contacts = await Contact.find()

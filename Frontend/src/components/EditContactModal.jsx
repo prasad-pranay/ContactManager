@@ -2,6 +2,7 @@ import { useState } from "react";
 import { UserIcon, MailIcon, PhoneIcon } from "../Helper/SvgIcons";
 import {InputField,TextareaField} from "../Helper/InputFields";
 import {  toast } from "react-toastify";
+import axios from "axios";
 
 export default function EditContactModal({ contact, onClose, onUpdate }) {
   const [form, setForm] = useState({
@@ -46,12 +47,10 @@ export default function EditContactModal({ contact, onClose, onUpdate }) {
 
     try {
       setLoading(true);
-      await fetch(`https://4a2874e825a0.ngrok-free.app/contacts/${contact._id}`, {
-        method: "PUT",
+      await axios.post(`https://4a2874e825a0.ngrok-free.app/update/${contact._id}`, {
         headers: { "Content-Type": "application/json","ngrok-skip-browser-warning": "true", },
         body: JSON.stringify(form),
       });
-
       onUpdate();
       onClose();
       toast.success("Updated Successfully");
