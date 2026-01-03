@@ -45,9 +45,9 @@ export default function EditContactModal({ contact, onClose, onUpdate }) {
 
     try {
       setLoading(true);
-      await fetch(`http://localhost:5000/api/contacts/${contact._id}`, {
+      await fetch(`https://4a2874e825a0.ngrok-free.app/contacts/${contact._id}`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json","ngrok-skip-browser-warning": "true", },
         body: JSON.stringify(form),
       });
 

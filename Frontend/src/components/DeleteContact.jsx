@@ -5,7 +5,11 @@ import ContactCard from './ContactCard';
 const DeleteContact = ({contactList, setDeleteContact, setContacts, setSelected}) => {
   const handleDelete = async () => {
     for(var id of contactList){
-      await axios.delete(`http://localhost:5000/contacts/${id}`);
+      await axios.delete(`https://4a2874e825a0.ngrok-free.app/contacts/${id}`, {
+  headers: {
+    "ngrok-skip-browser-warning": "true",
+  },
+});
       setContacts(contacts=>contacts.filter(c => c._id !== id));
     }
     setDeleteContact(null)

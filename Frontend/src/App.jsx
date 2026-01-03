@@ -20,7 +20,11 @@ export default function App() {
   }, []);
 
   async function fetchContacts() {
-    const res = await fetch("http://localhost:5000/contacts");
+    const res = await fetch("https://4a2874e825a0.ngrok-free.app/contacts", {
+  headers: {
+    "ngrok-skip-browser-warning": "true",
+  },
+});
     const data = await res.json();
     setContacts(data);
   }
