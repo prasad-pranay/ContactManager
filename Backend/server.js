@@ -44,7 +44,7 @@ app.delete('/contacts/:id', async (req, res) => {
 });
 
 // UPDSTE here
-app.post("/update/:id", async (req, res) => {
+app.put("/update/:id", async (req, res) => {
   const { id } = req.params;
   const { name, email, phone, message } = req.body;
 

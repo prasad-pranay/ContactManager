@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import DeleteContact from "./DeleteContact";
-import { CopyIcon, EditIcon, FlagIcon, MailIcon, PhoneIcon, TrashIcon } from "../Helper/SvgIcons";
+import { CopyIcon, EditIcon, FlagIcon, MailIcon, MessageIcon, PhoneIcon, TrashIcon } from "../Helper/SvgIcons";
 import EditContactModal from "./EditContactModal";
 import { toast } from "react-toastify";
 
@@ -51,7 +51,7 @@ export default function ContactList({ fetchContacts, contacts, setContacts, sele
                 {contact.phone}
               </p>
             </div>
-          <p>{contact.message}</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1 mt-1"><MessageIcon className="size-3" /> {contact.message.length >0 ? contact.message : "N|A"}</p>
           </div>
           {/* action buttons */}
           <div className="flex gap-3 text-lg">

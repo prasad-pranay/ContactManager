@@ -47,10 +47,19 @@ export default function EditContactModal({ contact, onClose, onUpdate }) {
 
     try {
       setLoading(true);
-      await axios.post(`https://4a2874e825a0.ngrok-free.app/update/${contact._id}`, {
-        headers: { "Content-Type": "application/json","ngrok-skip-browser-warning": "true", },
-        body: JSON.stringify(form),
-      });
+      // await fetch(`https://4a2874e825a0.ngrok-free.app/update/${contact._id}`, {
+      //   method: "PUT",
+      //   headers: { "Content-Type": "application/json","ngrok-skip-browser-warning": "true", },
+      //   body: JSON.stringify(form),
+      // });
+      await fetch(`https://4a2874e825a0.ngrok-free.app/update/${contact._id}`, {
+  method: "PUT",
+  headers: {
+    "Content-Type": "application/json",
+    "ngrok-skip-browser-warning": "true", // optional for ngrok
+  },
+  body: JSON.stringify(form),
+});
       onUpdate();
       onClose();
       toast.success("Updated Successfully");
