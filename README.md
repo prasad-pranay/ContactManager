@@ -4,7 +4,7 @@
 
 ---
 
-## 📸 Screenshots (Optional)
+## 📸 Screenshots of the project
 
 | Home Page (Light Mode) | Home Page (Dark Mode) |
 |---------|---------|
