@@ -4,6 +4,17 @@
 
 ---
 
+## 📸 Screenshots (Optional)
+
+| Home Page (Light Mode) | Home Page (Dark Mode) |
+|---------|---------|
+| ![Alt 1](screenshots/1.png) <br>  | ![Alt 2](screenshots/3.png) <br>  |
+| Add a Contact | Delete Contact |
+| ![Alt 3](screenshots/2.png) <br>  | ![Alt 4](screenshots/4.png) <br>  |
+
+
+---
+
 ## ✨ Features
 
 ### 🧑‍💼 Contact Management

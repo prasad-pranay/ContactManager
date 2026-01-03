@@ -12,7 +12,8 @@ export default function App() {
   const [showModal, setShowModal] = useState(false);
   // selected ones here
   const [selected,setSelected] = useState([]);
-
+  // for sorting here
+  const [sortBy, setSortBy] = useState("");
 
   useEffect(() => {
     fetchContacts();
@@ -24,21 +25,31 @@ export default function App() {
     setContacts(data);
   }
 
-  const filtered = contacts.filter(c =>
-    c.name.toLowerCase().includes(search.toLowerCase())
-  );
+  const sortedContact = contacts
+    .filter((c) =>
+      c.name.toLowerCase().includes(search.toLowerCase()) ||
+      c.email.toLowerCase().includes(search.toLowerCase()) ||
+      c.phone.includes(search)
+    )
+    .sort((a, b) => {
+      if (!sortBy) return 0; // No sort
+      if (sortBy === "createdAt") {
+        return new Date(a.createdAt) - new Date(b.createdAt);
+      }
+      return a[sortBy].toString().localeCompare(b[sortBy].toString());
+    });
 
   return (
-      <main className="h-screen overflow-hidden bg-gray-100 dark:bg-zinc-900 text-gray-900 dark:text-gray-100 p-6 transition duration-150 flex flex-col">
+      <main className="h-screen overflow-hidden bg-[#F8FAFB] dark:bg-zinc-900 text-gray-900 dark:text-gray-100 p-6 transition duration-150 flex flex-col">
         <Header
           onAdd={() => setShowModal(true)}
           selected={selected} setSelected={setSelected}
           setContacts={setContacts}
         />
 
-        <Toolbar search={search} setSearch={setSearch} />
+        <Toolbar search={search} setSearch={setSearch} sortBy={sortBy} setSortBy={setSortBy} />
 
-        <ContactList fetchContacts={fetchContacts} contacts={filtered} setContacts={setContacts} selected={selected} setSelected={setSelected} />
+        <ContactList fetchContacts={fetchContacts} contacts={sortedContact} setContacts={setContacts} selected={selected} setSelected={setSelected} />
 
         {showModal && (
           <AddContactModal

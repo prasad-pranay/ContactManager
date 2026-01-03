@@ -21,7 +21,7 @@ export default function ContactList({ fetchContacts, contacts, setContacts, sele
   }, [selected])
   
   return (
-    <section className="space-y-3 h-full overflow-y-auto overflow-x-hidden pr-4 pt-5">
+    <section className="space-y-3 h-full overflow-y-auto overflow-x-hidden pr-4 pt-5 pl-1">
       {contacts.map(contact => (
         <div
           key={contact._id}
