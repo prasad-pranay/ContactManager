@@ -5,7 +5,9 @@ const bodyParser = require('body-parser');
 const Contact = require('./model/Contact');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "*"
+}));
 app.use(bodyParser.json());
 
 require('./db'); // MongoDB connection
