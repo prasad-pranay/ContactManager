@@ -1,30 +1,13 @@
 import React, { useEffect, useState } from "react";
 import DeleteContact from "./DeleteContact";
-import { CopyIcon, EditIcon, FlagIcon, MailIcon, MessageIcon, PhoneIcon, TrashIcon } from "../Helper/SvgIcons";
+import { CopyIcon, EditIcon, FlagIcon, MailIcon, MenuIcon, MessageIcon, PhoneIcon, TrashIcon } from "../Helper/SvgIcons";
 import EditContactModal from "./EditContactModal";
 import { toast } from "react-toastify";
 
-export default function ContactList({ fetchContacts, contacts, setContacts, selected, setSelected }) {
-  // provide contact id here if want to delete
-  const [deleteContact, setDeleteContact] = useState(null)
-  // disable action button
-  const [disableAction, setDisableAction] = useState(false);
-  // show edit modal
-  const [showEdit, setShowEdit] = useState(null);
-
-  // set actions when seelcted is greater
-  useEffect(() => {
-    if (selected.length > 0) {
-      setDisableAction(true)
-    } else {
-      setDisableAction(false)
-    }
-  }, [selected])
-
-  return (
-    <section className="space-y-3 h-full overflow-y-auto overflow-x-hidden pr-4 pt-5 pl-1">
-      {contacts.map(contact => (
-        <div
+const ListCard = ({contact,setSelected,selected,disableAction})=>{
+  // show menu
+  const [showMenu,setShowMenu] = useState(false)
+  return <div
           key={contact._id}
           className="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-zinc-800 dark:hover:bg-zinc-700 shadow-sm hover:shadow-md transition duration-150"
         >
@@ -40,7 +23,7 @@ export default function ContactList({ fetchContacts, contacts, setContacts, sele
           </p>
           <div className="flex-1">
             <p className="font-medium text-2xl">{contact.name}</p>
-            <div className="flex gap-10">
+            <div className="flex sm:gap-10 flex-col sm:flex-row">
 
               <p className="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-1">
                 <MailIcon className="size-3.5" />
@@ -54,7 +37,10 @@ export default function ContactList({ fetchContacts, contacts, setContacts, sele
           <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1 mt-1"><MessageIcon className="size-3" /> {contact.message.length >0 ? contact.message : "N|A"}</p>
           </div>
           {/* action buttons */}
-          <div className="flex gap-3 text-lg">
+          {/* <div className="flex gap-3 text-lg"> */}
+          <div className="relative">
+
+        <div className={`flex gap-x-3 bg-white sm:bg-transparent sm:shadow-none shadow-lg px-5 py-5 sm:py-0 sm:px-0 rounded flex-row absolute sm:relative right-0 sm:top-0 top-13 z-[1500] sm:z-[10] ${!showMenu && "pointer-events-none opacity-0 sm:opacity-100 sm:pointer-events-all"}`}>
             <button onClick={() => {
               const { _id, __v, createdAt, updatedAt, ...rest } = contact;
               navigator.clipboard.writeText(JSON.stringify(rest));
@@ -73,7 +59,38 @@ export default function ContactList({ fetchContacts, contacts, setContacts, sele
               <TrashIcon className="size-6" />
             </button>
           </div>
+          <button
+          onClick={() => setShowMenu(prev=>!prev)}
+          className="block sm:hidden relative transition-all border-none py-2 duration-150 border px-2 cursor-pointer rounded-lg bg-gray-300 dark:bg-gray-700 active:scale-85"
+          >
+          <MenuIcon className="size-6" / >
+        </button>
+          </div>
         </div>
+}
+
+export default function ContactList({ fetchContacts, contacts, setContacts, selected, setSelected }) {
+  // provide contact id here if want to delete
+  const [deleteContact, setDeleteContact] = useState(null)
+  // disable action button
+  const [disableAction, setDisableAction] = useState(false);
+  // show edit modal
+  const [showEdit, setShowEdit] = useState(null);
+  
+
+  // set actions when seelcted is greater
+  useEffect(() => {
+    if (selected.length > 0) {
+      setDisableAction(true)
+    } else {
+      setDisableAction(false)
+    }
+  }, [selected])
+
+  return (
+    <section className="space-y-3 h-full overflow-y-auto overflow-x-hidden pr-1 sm:pr-4 pt-5  pl-1">
+      {contacts.map((contact,index) => (
+        <ListCard contact={contact} setSelected={setSelected} selected={selected} disableAction={disableAction} />
       ))}
       {contacts.length == 0 && <div className="flex gap-5 items-center justify-center h-full pb-35">
         <FlagIcon className="size-20" />
