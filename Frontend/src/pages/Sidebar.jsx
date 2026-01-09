@@ -87,7 +87,7 @@ const Sidebar = ({filter,setFilters,contacts,showSidebar,setShowSidebar}) => {
 
     return (<>
     {showSidebar && <div className="fixed bg-black/20 backdrop-blur-sm w-full h-full top-0 left-0 z-[900] md:hidden" onClick={()=>setShowSidebar(false)} ></div>}
-        <section className={`transition duration-150 ${showSidebar ? "translate-x-0":"-translate-x-[100%] md:translate-x-0"} z-[1000] md:relative fixed top-0 left-0 md:w-max w-[calc(100%-50px)] pl-5 pr-2 pt-5 pb-20 rounded-2xl shadow-sm h-full bg-[var(--sidebar)] min-w-[250px] flex flex-col overflow-hidden`}>
+        <section className={`transition duration-150 ${showSidebar ? "translate-x-0":"-translate-x-[100%] md:translate-x-0"} z-[1000] md:z-0 md:relative fixed top-0 left-0 md:w-max w-[calc(100%-50px)] pl-5 pr-2 pt-5 pb-20 rounded-2xl shadow-sm h-full bg-[var(--sidebar)] min-w-[250px] flex flex-col overflow-hidden`}>
             <section className='h-full overflow-y-auto gap-5 flex flex-col minimal-sidebar pr-2'>
                 <SidebarDropDown setFilters={setFilters} filter={filter} heading="By Ownership" group="ownership" options={[
                     { "text": "All Contacts", "icon": UserIcon, "value":"" }, 
