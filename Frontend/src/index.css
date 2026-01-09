@@ -7,3 +7,42 @@
     font-family: "Inter",sans-serif;
     box-sizing: border-box;
 }
+
+
+:root{
+    --bg: #F9FBFC;
+    --card: #ffffff;
+    --sidebar: #FFFFFF;
+    --text-primary: #111;
+    --text-light: #444;
+    --border: #ced4da;
+}
+
+.dark{
+    --bg: #000;
+    --sidebar: #111111;
+    --card: #27272A;
+    --border:#343a40;
+    --text-primary: #f8f9fa;
+    --text-light: #ced4da;
+}
+
+
+.hide-scrollbar::-webkit-scrollbar{
+    width: 0px;
+    height: 0px;
+}
+.minimal-sidebar::-webkit-scrollbar{
+    width: 8px;
+}
+.minimal-sidebar::-webkit-scrollbar-thumb{
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: var(--card);
+}
+
+@media (max-width:640px) {
+    .minimal-sidebar::-webkit-scrollbar{
+    width: 4px;
+}
+}
