@@ -15,26 +15,51 @@ export default function EditContactModal({ contact, onClose, onUpdate }) {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
+  // const validateField = (field, value) => {
+  //   let error = "";
+
+  //   if (field === "name" && !value.trim()) {
+  //     error = "Name is required";
+  //   }
+ 
+  //   if (field === "email") {
+  //     if (!value.trim()) error = "Email is required";
+  //     else if (!/\S+@\S+\.\S+/.test(value)) error = "Invalid email";
+  //   }
+
+  //   if (field === "phone") {
+  //     if (!value.trim()) error = "Phone is required";
+  //     else if (!/^\d{10}$/.test(value)) error = "Enter 10-digit phone number";
+  //   }
+
+  //   setErrors((prev) => ({ ...prev, [field]: error }));
+  // };
   const validateField = (field, value) => {
     let error = "";
 
     if (field === "name" && !value.trim()) {
       error = "Name is required";
+    }else if(field=="name" && existedNames.includes(value.trim())){
+        error = "Name already Existed"
     }
 
     if (field === "email") {
       if (!value.trim()) error = "Email is required";
-      else if (!/\S+@\S+\.\S+/.test(value)) error = "Invalid email";
+      else if (!/\S+@\S+\.\S+/.test(value)) error = "Invalid email address";
     }
 
     if (field === "phone") {
-      if (!value.trim()) error = "Phone is required";
+      if(value.trim().length>10){
+        error="Phone number cannot be greater than 10 digits"
+      }
+      else if (!value.trim()) error = "Phone number is required";
       else if (!/^\d{10}$/.test(value)) error = "Enter 10-digit phone number";
     }
 
+    console.log(error)
+
     setErrors((prev) => ({ ...prev, [field]: error }));
   };
-
   const isFormValid =
     form.name &&
     form.email &&
@@ -47,11 +72,6 @@ export default function EditContactModal({ contact, onClose, onUpdate }) {
 
     try {
       setLoading(true);
-      // await fetch(`https://contact-manager-4862.up.railway.app/update/${contact._id}`, {
-      //   method: "PUT",
-      //   headers: { "Content-Type": "application/json","ngrok-skip-browser-warning": "true", },
-      //   body: JSON.stringify(form),
-      // });
       await fetch(`https://contact-manager-4862.up.railway.app/update/${contact._id}`, {
   method: "PUT",
   headers: {
@@ -94,8 +114,10 @@ export default function EditContactModal({ contact, onClose, onUpdate }) {
           label="Name"
           icon={UserIcon}
           value={form.name}
-          onChange={(e) =>
+          onChange={(e) =>{
             setForm({ ...form, name: e.target.value })
+            validateField("name", form.name)
+          }
           }
           onBlur={() => validateField("name", form.name)}
           error={errors.name}
@@ -106,8 +128,10 @@ export default function EditContactModal({ contact, onClose, onUpdate }) {
           type="email"
           icon={MailIcon}
           value={form.email}
-          onChange={(e) =>
+          onChange={(e) =>{
             setForm({ ...form, email: e.target.value })
+            validateField("email", form.email)
+          }
           }
           onBlur={() => validateField("email", form.email)}
           error={errors.email}
@@ -117,9 +141,9 @@ export default function EditContactModal({ contact, onClose, onUpdate }) {
           label="Phone"
           icon={PhoneIcon}
           value={form.phone}
-          onChange={(e) =>
+          onChange={(e) =>{
             setForm({ ...form, phone: e.target.value })
-          }
+            validateField("phone", e.target.value)}}
           onBlur={() => validateField("phone", form.phone)}
           error={errors.phone}
         />

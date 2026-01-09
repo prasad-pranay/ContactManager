@@ -85,12 +85,11 @@ export default function AddContactModal({ onClose, onAdd, contacts }) {
           icon={UserIcon}
           value={form.name}
           onChange={(e) =>{
-
             setForm({ ...form, name: e.target.value })
             validateField("name", form.name)
           }
           }
-          // onBlur={() => validateField("name", form.name)}
+          onBlur={() => validateField("name", form.name)}
           error={errors.name}
           placeholder="John Doe"
         />
