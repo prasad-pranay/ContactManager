@@ -10,7 +10,7 @@ export default function Header({ onAdd, selected, setSelected, setContacts,searc
     <section className="grid grid-cols-1 gap-y-2 md:gap-y-0 md:flex items-center justify-between bg-[var(--sidebar)] shadow-sm rounded-2xl py-5 px-5 mx-5 mt-5">
       {selected.length == 0 && <>
       <div className="flex w-full gap-5">
-      <h1 className="text-2xl font-light flex gap-4 items-center mr-auto"> <img src="/icon.png" alt="" className="h-10" /> Contact <span className="hidden md:block">Manager</span></h1>
+      <h1 className="text-2xl font-light flex gap-4 items-center mr-auto"> <img src="/icon.png" alt="" className="h-10" />  <span className="hidden md:block">Contact Manager</span></h1>
       <button
           onClick={onAdd}
           className="md:hidden px-4 py-2 w-max border border-[var(--border)] cursor-pointer rounded-lg bg-[var(--card)] dark:hover:bg-indigo-700 hover:bg-indigo-500 hover:text-white flex items-center gap-2 active:scale-85 transition-all duration-150"

@@ -18,7 +18,7 @@ export default function App() {
   // for sorting here
   const [sortBy, setSortBy] = useState("");
   // show sidebar
-  const [showSidebar,setShowSidebar] = useState(true)
+  const [showSidebar,setShowSidebar] = useState(false)
 
   useEffect(() => {
     fetchContacts();
