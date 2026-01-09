@@ -53,13 +53,13 @@ export default function App() {
   const sortedContact = contacts
     .filter((c) => {
     const searchText = search.toLowerCase();
-
     return (
       (
-        c.name.toLowerCase().includes(searchText) &&
-        (c.email.toLowerCase().includes(filters["mail"]) && c.email.toLowerCase().includes(searchText)) &&
-        c.phone.includes(search) && 
-        (filters["priority"]=="msg" ? c.message : filters["priority"]=="star" ? filters["star"]=="1" : true)
+        (c.name.toLowerCase().includes(searchText) ||
+        c.email.toLowerCase().includes(searchText) ||
+        c.phone.includes(search)) && 
+        (filters["priority"]=="msg" ? c.message : filters["priority"]=="star" ? filters["star"]=="1" : true) &&
+        (filters["mail"]!="" ? c.email.toLowerCase().includes(filters["mail"]) : true) 
       ) 
     );
   })
